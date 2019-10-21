@@ -30,12 +30,14 @@ const UserLogIn = ({ touched, errors}) => {
     )
 }
 
-const FormikUserLogIn = withFormik(
+const FormikUserLogIn = withFormik({
     mapPropsToValues({ userName, password }){
-        return(
+        
+        return{
+
             userName: userName || "",
             password: ""
-        )
+        }
     },
 
     validationSchema: Yup.object().shape({
@@ -46,7 +48,7 @@ const FormikUserLogIn = withFormik(
             .min(6, "Little longer please (at least 6 characters)")
             .required("Can't get in without a password")
     })
-)(UserLogIn)
+})(UserLogIn)
 
 
 export default FormikUserLogIn

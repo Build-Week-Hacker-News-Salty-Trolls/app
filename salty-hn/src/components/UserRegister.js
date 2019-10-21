@@ -55,15 +55,16 @@ const UserRegistration = ({ touched, errors }) => {
 }
 
 
-const FormikUserRegistration = withFormik(
+const FormikUserRegistration = withFormik({
     mapPropsToValues({ firstName, lastName, userName, email, password }){
-        return(
+
+        return{
             firstName: "",
             lastName: "",
             userName: "",
             email: "",
             password: "",
-        )
+        }
     },
 
     validationSchema: Yup.object().shape({
@@ -81,6 +82,6 @@ const FormikUserRegistration = withFormik(
             .min(6, "Little longer please (at least 6 characters)")
             .required("Can't get in without a password")
     })
-)(UserRegistration)
+})(UserRegistration)
 
 export default FormikUserRegistration
