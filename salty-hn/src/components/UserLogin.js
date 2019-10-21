@@ -32,10 +32,10 @@ const UserLogIn = ({ touched, errors}) => {
 
 const FormikUserLogIn = withFormik(
     mapPropsToValues({ userName, password }){
-        return{
+        return(
             userName: userName || "",
             password: ""
-        }
+        )
     },
 
     validationSchema: Yup.object().shape({
