@@ -8,10 +8,10 @@ import FormikUserRegistration from './components/UserRegister';
 function App() {
   return (
     <div className="App">
-      <p>Salty Hackers</p>
+      <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
       <Router>
-        <Route path="Login" render={props => <FormikUserLogin {...props} />} />
-        <Route path="Register" render={props => <FormikUserRegistration {...props} />} />
+        <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
+        <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
       </Router>
     </div>
   );

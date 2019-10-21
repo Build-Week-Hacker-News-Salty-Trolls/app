@@ -3,16 +3,17 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
 
-const UserRegistration = ({ touched, errors }) => {
+const UserRegistration = ({ values, touched, errors }) => {
 
-
+    console.log(values.firstName)
+    
     return(
         <div>
             <Form>
                 <Field
                     type="text"
                     name="firstName"
-                    placeHolder="First Name"
+                    placeholder="First Name"
                 />
                 {touched.firstName && errors.firstName && (
                     <p className="error">{errors.firstName}</p>
@@ -20,7 +21,7 @@ const UserRegistration = ({ touched, errors }) => {
                 <Field
                     type="text"
                     name="lastName"
-                    placeHolder="Last Name"
+                    placeholder="Last Name"
                 />
                 {touched.lastName && errors.lastName && (
                     <p className="error">{errors.lastName}</p>
@@ -28,7 +29,7 @@ const UserRegistration = ({ touched, errors }) => {
                 <Field
                     type="text"
                     name="userName"
-                    placeHolder="username"
+                    placeholder="username"
                 />
                 {touched.userName && errors.userName && (
                     <p className="error">{errors.userName}</p>
@@ -36,7 +37,7 @@ const UserRegistration = ({ touched, errors }) => {
                 <Field
                     type="text"
                     name="email"
-                    placeHolder="email"
+                    placeholder="email"
                 />
                 {touched.email && errors.email && (
                     <p className="error">{errors.email}</p>
@@ -44,7 +45,7 @@ const UserRegistration = ({ touched, errors }) => {
                 <Field 
                     type="text"
                     name="password"
-                    placeHolder="password"
+                    placeholder="password"
                 />
                 {touched.password && errors.password && (
                     <p className="error">{errors.password}</p>
@@ -56,8 +57,8 @@ const UserRegistration = ({ touched, errors }) => {
 
 
 const FormikUserRegistration = withFormik({
-    mapPropsToValues({ firstName, lastName, userName, email, password }){
-
+    mapPropsToValues(){
+        
         return{
             firstName: "",
             lastName: "",
