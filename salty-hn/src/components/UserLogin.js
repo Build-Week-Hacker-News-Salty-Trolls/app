@@ -2,16 +2,16 @@ import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-const UserLogIn = ({ touched, errors}) => {
+const UserLogIn = ({ values, touched, errors}) => {
 
-
+    console.log(values.userName)
     return (
         <div>
             <Form>
                 <Field 
                     type="text" 
                     name="userName" 
-                    placeHolder="username"
+                    placeholder="username"
                 />
                 {touched.userName && errors.userName && (
                     <p className="error">{errors.userName}</p>

@@ -9,10 +9,10 @@ import { EditUser } from './components/EditUser';
 function App() {
   return (
     <div className="App">
+      <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
       <Router>
-        <Route exact path="/Login" render={props => <FormikUserLogin {...props} />} />
+        <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
-        <Route path='/EditUser' component={EditUser} />
       </Router>
     </div>
   );
