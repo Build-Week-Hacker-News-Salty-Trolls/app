@@ -4,6 +4,7 @@ import './App.css';
 
 import FormikUserLogin from './components/UserLogin';
 import FormikUserRegistration from './components/UserRegister';
+import { EditUser } from './components/EditUser';
 
 function App() {
   return (
