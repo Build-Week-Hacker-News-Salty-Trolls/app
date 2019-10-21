@@ -10,9 +10,8 @@ function App() {
     <div className="App">
       <p>Salty Hackers</p>
       <Router>
-        <Route exact path="/" render={props => <App {...props} />} />
-        <Route path="/components/UserLogin" render={props => <FormikUserLogin {...props} />} />
-        <Route path="/components/UserRegister" render={props => <FormikUserRegistration {...props} />} />
+        <Route path="Login" render={props => <FormikUserLogin {...props} />} />
+        <Route path="Register" render={props => <FormikUserRegistration {...props} />} />
       </Router>
     </div>
   );
