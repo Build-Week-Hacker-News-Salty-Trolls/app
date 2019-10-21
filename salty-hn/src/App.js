@@ -4,14 +4,15 @@ import './App.css';
 
 import FormikUserLogin from './components/UserLogin';
 import FormikUserRegistration from './components/UserRegister';
+import { EditUser } from './components/EditUser';
 
 function App() {
   return (
     <div className="App">
-      <p>Salty Hackers</p>
       <Router>
-        <Route path="Login" render={props => <FormikUserLogin {...props} />} />
-        <Route path="Register" render={props => <FormikUserRegistration {...props} />} />
+        <Route exact path="/Login" render={props => <FormikUserLogin {...props} />} />
+        <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
+        <Route path='/EditUser' component={EditUser} />
       </Router>
     </div>
   );

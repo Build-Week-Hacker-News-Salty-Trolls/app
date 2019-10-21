@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 const UserRegistration = ({ touched, errors }) => {
 
 
-    return(
+    return (
         <div>
             <Form>
                 <Field
@@ -41,7 +41,7 @@ const UserRegistration = ({ touched, errors }) => {
                 {touched.email && errors.email && (
                     <p className="error">{errors.email}</p>
                 )}
-                <Field 
+                <Field
                     type="text"
                     name="password"
                     placeHolder="password"
@@ -56,9 +56,9 @@ const UserRegistration = ({ touched, errors }) => {
 
 
 const FormikUserRegistration = withFormik({
-    mapPropsToValues({ firstName, lastName, userName, email, password }){
+    mapPropsToValues({ firstName, lastName, userName, email, password }) {
 
-        return{
+        return {
             firstName: "",
             lastName: "",
             userName: "",
