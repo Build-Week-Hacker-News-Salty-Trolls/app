@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios'
 
-import { getComments } from '../actions'
+import CommentCards from './CommentCards'
 
-export const UserDashboard = () => {
-    const data = useSelector(state => state.data)
+import { getUsers, getDummyData, getUserComments } from '../actions'
+
+export const UserDashboard = props => {
+    const userData = useSelector(state => state.dumpData)
     const loading = useSelector(state => state.isFetching)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getComments())
+        dispatch(getUsers())
+        dispatch(getDummyData())
     }, [])
 
     if (loading) {
@@ -18,8 +22,13 @@ export const UserDashboard = () => {
         )
     }
 
-    console.log(data)
     return (
-        <p>Dash</p>
+        <div>
+            {userData.map(data => {
+                return (
+                    <CommentCards userInfo={data} key={data.ranking} props={props} />)
+            })}
+        </div>
+
     )
 }
