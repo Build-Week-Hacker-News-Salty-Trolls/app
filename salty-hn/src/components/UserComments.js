@@ -18,11 +18,16 @@ export const UserComments = props => {
             <p>LOADING</p>
         )
     }
+
+    console.log('Comments in UC component', comments)
     return (
         <div>
             {comments.map(comment => {
                 return (
-                    <p>{comment.text}</p>
+                    <div>
+                        <p>Salty Score:{comment.salty_score}</p>
+                        <p>{comment.text}</p>
+                    </div>
                 )
             })}
 
