@@ -8,9 +8,12 @@ import { EditUser } from './components/EditUser';
 import { UserDashboard } from './components/Dashboard';
 import { UserComments } from './components/UserComments'
 
+
+
+
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
