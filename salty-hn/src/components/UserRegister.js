@@ -2,15 +2,17 @@ import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
+import { FieldStyled, FormStyled, ButtonStyled } from './Styling';
+
 
 const UserRegistration = ({ values, touched, errors }) => {
-
+    // use values.userName etc to access state
     console.log(values.firstName)
     
     return(
         <div>
-            <Form>
-                <Field
+            <FormStyled>
+                <FieldStyled
                     type="text"
                     name="firstName"
                     placeholder="First Name"
@@ -18,7 +20,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                 {touched.firstName && errors.firstName && (
                     <p className="error">{errors.firstName}</p>
                 )}
-                <Field
+                <FieldStyled
                     type="text"
                     name="lastName"
                     placeholder="Last Name"
@@ -26,7 +28,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                 {touched.lastName && errors.lastName && (
                     <p className="error">{errors.lastName}</p>
                 )}
-                <Field
+                <FieldStyled
                     type="text"
                     name="userName"
                     placeholder="username"
@@ -34,7 +36,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                 {touched.userName && errors.userName && (
                     <p className="error">{errors.userName}</p>
                 )}
-                <Field
+                <FieldStyled
                     type="text"
                     name="email"
                     placeholder="email"
@@ -42,7 +44,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                 {touched.email && errors.email && (
                     <p className="error">{errors.email}</p>
                 )}
-                <Field 
+                <FieldStyled 
                     type="text"
                     name="password"
                     placeholder="password"
@@ -50,7 +52,8 @@ const UserRegistration = ({ values, touched, errors }) => {
                 {touched.password && errors.password && (
                     <p className="error">{errors.password}</p>
                 )}
-            </Form>
+                <ButtonStyled type="submit">Submit!</ButtonStyled>
+            </FormStyled>
         </div>
     )
 }

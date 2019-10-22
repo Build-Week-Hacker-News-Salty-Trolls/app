@@ -2,13 +2,15 @@ import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-const UserLogIn = ({ values, touched, errors}) => {
+import { FormStyled, FieldStyled, ButtonStyled } from './Styling';
 
+const UserLogIn = ({ values, touched, errors}) => {
+    // use values.userName etc to access state
     console.log(values.userName)
     return (
         <div>
-            <Form>
-                <Field 
+            <FormStyled>
+                <FieldStyled 
                     type="text" 
                     name="userName" 
                     placeholder="username"
@@ -16,7 +18,7 @@ const UserLogIn = ({ values, touched, errors}) => {
                 {touched.userName && errors.userName && (
                     <p className="error">{errors.userName}</p>
                 )}
-                <Field
+                <FieldStyled
                     type="text"
                     name="password"
                     placeholder="password"
@@ -24,8 +26,8 @@ const UserLogIn = ({ values, touched, errors}) => {
                 {touched.password && errors.password && (
                     <p className="error">{errors.password}</p>
                 )}
-                <button type="submit">Log In</button>
-            </Form>
+                <ButtonStyled type="submit">Log In</ButtonStyled>
+            </FormStyled >
         </div>
     )
 }

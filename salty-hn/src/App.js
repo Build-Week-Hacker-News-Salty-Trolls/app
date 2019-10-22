@@ -4,16 +4,17 @@ import './App.css';
 
 import FormikUserLogin from './components/UserLogin';
 import FormikUserRegistration from './components/UserRegister';
+import { AppStyled } from './components/Styling';
 
 function App() {
   return (
-    <div className="App">
+    <AppStyled>
       <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
       </Router>
-    </div>
+    </AppStyled>
   );
 }
 
