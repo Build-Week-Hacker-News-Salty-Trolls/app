@@ -57,5 +57,9 @@ export const NavBarStyled = styled.nav `
         text-decoration: none;
         margin: 0 3%;
         color: black;
+
+        :hover {
+            color: #5D5B5B;
+        }
     }
 `
