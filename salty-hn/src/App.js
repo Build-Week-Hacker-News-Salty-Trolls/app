@@ -5,6 +5,7 @@ import './App.css';
 import FormikUserLogin from './components/UserLogin';
 import FormikUserRegistration from './components/UserRegister';
 import { EditUser } from './components/EditUser';
+import { UserDashboard } from './components/Dashboard';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
+        <Route path='/home' component={UserDashboard} />
       </Router>
     </div>
   );

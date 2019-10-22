@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 const UserRegistration = ({ values, touched, errors }) => {
 
-    console.log(values.firstName)
+    console.log(values)
 
     return (
         <div>
