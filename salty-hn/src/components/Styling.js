@@ -44,3 +44,18 @@ export const UserCardStyled = styled.div `
     color: black;
     opacity: 0.8;
 `
+
+export const NavBarStyled = styled.nav `
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    margin: 2% auto;
+    width: 100%;
+    align-items: flex-end;
+
+    a, p {
+        text-decoration: none;
+        margin: 0 3%;
+        color: black;
+    }
+`

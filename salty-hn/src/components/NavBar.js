@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link, Router } from 'react-router-dom';
+import { NavBarStyled } from './Styling';
 
 const NavBar = () => {
 
     return(
-        <nav>
+        <NavBarStyled>
                 <p>Your UserName</p>
                 <a href="/home">Log Out</a>
                 <a href="">Saved Comments</a>
                 <a href="">Comments</a>
                 <a href="/home">Usernames</a>
-        </nav>
+        </NavBarStyled>
     )
 }
 
