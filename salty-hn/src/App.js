@@ -8,12 +8,14 @@ import { EditUser } from './components/EditUser';
 import { UserDashboard } from './components/Dashboard';
 import { UserComments } from './components/UserComments'
 
+import { AppStyled } from './components/Styling'
+
 
 
 
 function App() {
   return (
-    <div className='App'>
+    <AppStyled>
       <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
@@ -21,7 +23,7 @@ function App() {
         <Route path='/home' component={UserDashboard} />
         <Route path='/user-comments/:author' component={UserComments} />
       </Router>
-    </div>
+    </AppStyled>
   );
 }
 
