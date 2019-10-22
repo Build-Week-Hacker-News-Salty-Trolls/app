@@ -4,24 +4,27 @@ import './App.css';
 
 import FormikUserLogin from './components/UserLogin';
 import FormikUserRegistration from './components/UserRegister';
+import NavBar from './components/NavBar';
 import { EditUser } from './components/EditUser';
 import { UserDashboard } from './components/Dashboard';
-import { UserComments } from './components/UserComments'
+import { UserComments } from './components/UserComments';
+import { AppStyled } from './components/Styling';
 
 
 
 
 function App() {
   return (
-    <div className='App'>
+    <AppStyled>
       <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
+      <NavBar />
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
         <Route path='/home' component={UserDashboard} />
         <Route path='/user-comments/:author' component={UserComments} />
       </Router>
-    </div>
+    </AppStyled>
   );
 }
 
