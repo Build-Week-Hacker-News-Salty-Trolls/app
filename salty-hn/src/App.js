@@ -5,6 +5,7 @@ import './App.css';
 import FormikUserLogin from './components/UserLogin';
 import FormikUserRegistration from './components/UserRegister';
 import NavBar from './components/NavBar';
+import CommentDashboard from './components/CommentDashboard';
 import { EditUser } from './components/EditUser';
 import { UserDashboard } from './components/Dashboard';
 import { UserComments } from './components/UserComments';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
         <Route path='/home' component={UserDashboard} />
         <Route path='/user-comments/:author' component={UserComments} />
+        <Route path='/comments' component={CommentDashboard} />
       </Router>
     </AppStyled>
   );
