@@ -8,7 +8,7 @@ const NavBar = () => {
                 <p>Your UserName</p>
                 <a href="/home">Log Out</a>
                 <a href="">Saved Comments</a>
-                <a href="">Comments</a>
+                <a href="/comments">Comments</a>
                 <a href="/home">Usernames</a>
         </NavBarStyled>
     )
