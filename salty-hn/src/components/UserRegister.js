@@ -45,7 +45,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                     <p className="error">{errors.email}</p>
                 )}
                 <FieldStyled 
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="password"
                 />

@@ -19,7 +19,7 @@ const UserLogIn = ({ values, touched, errors}) => {
                     <p className="error">{errors.userName}</p>
                 )}
                 <FieldStyled
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="password"
                 />
