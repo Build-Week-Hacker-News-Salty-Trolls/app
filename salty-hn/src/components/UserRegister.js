@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { FieldStyled, FormStyled, ButtonStyled } from './Styling';
 
 
+
 const UserRegistration = ({ values, touched, errors }) => {
     // use values.userName etc to access state
     console.log(values.firstName)
@@ -44,6 +45,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                 {touched.email && errors.email && (
                     <p className="error">{errors.email}</p>
                 )}
+
                 <FieldStyled 
                     type="password"
                     name="password"
@@ -60,9 +62,9 @@ const UserRegistration = ({ values, touched, errors }) => {
 
 
 const FormikUserRegistration = withFormik({
-    mapPropsToValues(){
-        
-        return{
+    mapPropsToValues() {
+
+        return {
             firstName: "",
             lastName: "",
             userName: "",
