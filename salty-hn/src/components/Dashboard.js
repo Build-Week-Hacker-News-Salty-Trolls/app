@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
 
 import CommentCards from './CommentCards'
+import { ContainerStyled } from './Styling';
 
 import { getUsers, getDummyData, getUserComments } from '../actions'
 
@@ -23,12 +24,12 @@ export const UserDashboard = props => {
     }
 
     return (
-        <div>
+        <ContainerStyled>
             {userData.map(data => {
                 return (
                     <CommentCards userInfo={data} key={data.ranking} props={props} />)
             })}
-        </div>
+        </ContainerStyled>
 
     )
 }
