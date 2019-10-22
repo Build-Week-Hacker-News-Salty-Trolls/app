@@ -4,13 +4,17 @@ import {
     GET_USERS_FAIL,
     GET_DUMMY_START,
     GET_DUMMY_SUCCESS,
-    GET_DUMMY_FAIL
+    GET_DUMMY_FAIL,
+    GET_USER_COMMENT_START,
+    GET_USER_COMMENT_SUCCESS,
+    GET_USER_COMMENT_FAIL
 } from '../actions'
 
 const initialState = {
     data: [],
     dummyData: [],
     dumpData: [],
+    userComments: [],
     isFetching: false,
     error: '',
 }
@@ -42,7 +46,6 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: '',
-
             }
         case GET_DUMMY_SUCCESS:
             return {
@@ -56,7 +59,25 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: action.payload,
-
+            }
+        case GET_USER_COMMENT_START:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+            }
+        case GET_USER_COMMENT_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                userComments: action.payload
+            }
+        case GET_USER_COMMENT_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
             }
         default:
             return state

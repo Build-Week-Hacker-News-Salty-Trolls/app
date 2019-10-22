@@ -9,6 +9,10 @@ export const GET_DUMMY_START = 'GET_DUMMY_START';
 export const GET_DUMMY_SUCCESS = 'GET_DUMMY_SUCCESS';
 export const GET_DUMMY_FAIL = 'GET_DUMMY_FAIL';
 
+export const GET_USER_COMMENT_START = 'GET_USER_COMMENT_START';
+export const GET_USER_COMMENT_SUCCESS = 'GET_USER_COMMENT_SUCCESS';
+export const GET_USER_COMMENT_FAIL = 'GET_USER_COMMENT_FAIL';
+
 export const getUsers = () => dispatch => {
     dispatch({ type: GET_USERS_START })
     axios
@@ -29,4 +33,15 @@ export const getDummyData = () => dispatch => {
             dispatch({ type: GET_DUMMY_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_DUMMY_FAIL, payload: err.response }))
+}
+
+export const getUserComments = (userName) => dispatch => {
+    dispatch({ type: GET_USER_COMMENT_START })
+    axios
+        .get(`https://salty-salt.herokuapp.com/user-comments/${userName}`)
+        .then(res => {
+            console.log('res in getUSER_COMMENT', res)
+            dispatch({ type: GET_USER_COMMENT_SUCCESS, payload: res.data })
+        })
+        .catch(err => dispatch({ type: GET_USER_COMMENT_FAIL, payload: err.response }))
 }
