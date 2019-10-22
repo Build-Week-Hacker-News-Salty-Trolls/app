@@ -1,15 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios'
 
-import { getComments } from '../actions'
+import CommentCards from './CommentCards'
+
+import { getUsers, getDummyData } from '../actions'
 
 export const UserDashboard = () => {
-    const data = useSelector(state => state.data)
+    const userData = useSelector(state => state.dumpData)
     const loading = useSelector(state => state.isFetching)
     const dispatch = useDispatch()
 
+    // useEffect(() => {
+    //     axios
+    //         .get('https://cors-anywhere.herokuapp.com/https://salty-salt.herokuapp.com/salty-users')
+    //         .then(res => {
+    //             console.log('data dump res', res.data)
+    //             setAllData(res.data)
+    //         })
+    //         .catch(err => console.log('There was an error', err))
+    // }, [])
+
     useEffect(() => {
-        dispatch(getComments())
+        dispatch(getUsers())
+        dispatch(getDummyData())
     }, [])
 
     if (loading) {
@@ -18,8 +32,15 @@ export const UserDashboard = () => {
         )
     }
 
-    console.log(data)
+    console.log('USER DATAA', userData)
     return (
-        <p>Dash</p>
+        <div>
+            {userData.map(data => {
+                return (
+                    <CommentCards userInfo={data} key={data.ranking} />)
+
+            })}
+        </div>
+
     )
 }
