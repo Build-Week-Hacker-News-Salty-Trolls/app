@@ -17,6 +17,9 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 
+export const SAVE_START = 'SAVE_START'
+export const SAVE_SUCCESS = 'SAVE_SUCCESS'
+
 export const getUsers = () => dispatch => {
     dispatch({ type: GET_USERS_START })
     axios
@@ -60,3 +63,41 @@ export const userLogin = loginInfo => dispatch => {
         })
         .catch(err => dispatch({ type: LOGIN_FAIL, payload: err.response }))
 }
+
+//This action handles user registration push the inputed data to BE server 
+
+// export const userRegister = userInfo => dispatch => {
+//     dispatch({ type: USER_REGISTER_START })
+//     axiosWithAuth()
+//         .post('API HERE', userInfo)
+//         .catch(err => dispatch({ type: USER_REGISTER_FAIL, payload: err.response }))
+// }
+
+// this action handles user editing taking the inputs from the EditUser component and over writting the existing data
+
+// export const editUser = (userInfo, id) => dispatch => {
+//     dispatch({ type: EDIT_USER_START})
+//     axiosWithAuth()
+//         .put('api here w/ userid', userInfo)
+//         .catch(err => dispatch({type: EDIT_USER_FAIL, payload: err.response}))
+// }
+
+
+// This action will push the selected comment into the end point that holds saved comments
+
+export const saveComment = (comment) => dispatch => {
+    dispatch({ type: SAVE_START })
+    axiosWithAuth()
+        .post('Saved comment endpoint here', comment)
+        .then(dispatch({ type: SAVE_SUCCESS, payload: comment }))
+    console.log(comment)
+}
+
+// this action will remove any saved comment the user doesn't want to see anymore
+
+// export const deleteSavedComment = id => dispatch => {
+//     dispatch({ type: START_DELETE })
+//     axiosWithAuth()
+//         .delete('ENDPOINT HERE PLS')
+//         .catch(err => dispatch({ type: DELETE_FAIL, payload: err.response }))
+// }

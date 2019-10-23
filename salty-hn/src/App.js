@@ -11,6 +11,7 @@ import { UserDashboard } from './components/Dashboard';
 import { UserComments } from './components/UserComments';
 
 import { AppStyled, HeaderStyled } from './components/Styling';
+import { SavedComments } from './components/SavedComments';
 
 
 
@@ -26,8 +27,10 @@ function App() {
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
+        <Route path='/edit-user' component={EditUser} />
         <Route path='/home' component={UserDashboard} />
         <Route path='/user-comments/:author' component={UserComments} />
+        <Route path='/saved-comments' component={SavedComments} />
         <Route path='/comments' component={CommentDashboard} />
       </Router>
     </AppStyled>

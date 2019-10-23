@@ -10,7 +10,9 @@ import {
     GET_USER_COMMENT_FAIL,
     LOGIN_START,
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOGIN_FAIL,
+    SAVE_START,
+    SAVE_SUCCESS
 } from '../actions'
 
 const initialState = {
@@ -21,7 +23,14 @@ const initialState = {
     saltiestUsers: [],
     // Top 10 comments by a specific user(Get this by clicking 'view comments') dynamic render
     userComments: [],
-    loginData: {},
+    // Be sure to change this data point once you can actually login, this is place holder data!
+    loginData: {
+        firstname: 'Tony',
+        lastname: 'Kovar',
+        username: 'tonyrkovar',
+        email: 'tonyrkovar@gmail.com',
+        password: 'lolol.ololol'
+    },
     isFetching: false,
     error: '',
 }
@@ -104,6 +113,19 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: action.payload
+            }
+        case SAVE_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case SAVE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                data: action.payload
             }
         default:
             return state
