@@ -14,11 +14,11 @@ const CommentDashboard = () => {
 
     useEffect(() => {
         axios
-            .get('https://salty-salt.herokuapp.com/dump')
+            .get('https://salty-salt.herokuapp.com/user-dump')
             .then(response => {
                 console.log(response);
                 const results = response.data.filter(username => 
-                    username.by.toLowerCase().includes(query.toLowerCase()));
+                    username.author.toLowerCase().includes(query.toLowerCase()));
                 setComments(results);
             })
             .catch(error => {
@@ -42,7 +42,7 @@ const CommentDashboard = () => {
                 return (
                     <GeneralCommentCards
                         key={comment.id}
-                        username={comment.by}
+                        username={comment.author}
                         comment={comment.text}
                         salty_score={comment.salty_score}
                     />
