@@ -21,7 +21,14 @@ const initialState = {
     saltiestUsers: [],
     // Top 10 comments by a specific user(Get this by clicking 'view comments') dynamic render
     userComments: [],
-    loginData: {},
+    // Be sure to change this data point once you can actually login, this is place holder data!
+    loginData: {
+        firstname: 'Tony',
+        lastname: 'Kovar',
+        username: 'tonyrkovar',
+        email: 'tonyrkovar@gmail.com',
+        password: 'lolol.ololol'
+    },
     isFetching: false,
     error: '',
 }

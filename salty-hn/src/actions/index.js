@@ -60,3 +60,17 @@ export const userLogin = loginInfo => dispatch => {
         })
         .catch(err => dispatch({ type: LOGIN_FAIL, payload: err.response }))
 }
+
+// export const userRegister = userInfo => dispatch => {
+//     dispatch({ type: USER_REGISTER_START })
+//     axiosWithAuth()
+//         .post('API HERE', userInfo)
+//         .catch(err => dispatch({ type: USER_REGISTER_FAIL, payload: err.response }))
+// }
+
+// export const editUser = (userInfo, id) => dispatch => {
+//     dispatch({ type: EDIT_USER_START})
+//     axiosWithAuth()
+//         .put('api here w/ userid', userInfo)
+//         .catch(err => dispatch({type: EDIT_USER_FAIL, payload: err.response}))
+// }
