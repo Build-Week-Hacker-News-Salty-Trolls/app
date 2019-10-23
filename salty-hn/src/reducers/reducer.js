@@ -7,14 +7,21 @@ import {
     GET_DUMMY_FAIL,
     GET_USER_COMMENT_START,
     GET_USER_COMMENT_SUCCESS,
-    GET_USER_COMMENT_FAIL
+    GET_USER_COMMENT_FAIL,
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL
 } from '../actions'
 
 const initialState = {
     data: [],
+    // 18k misc salty comments  
     dummyData: [],
-    dumpData: [],
+    // Top 100 saltiest users
+    saltiestUsers: [],
+    // Top 10 comments by a specific user(Get this by clicking 'view comments') dynamic render
     userComments: [],
+    loginData: {},
     isFetching: false,
     error: '',
 }
@@ -22,6 +29,25 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case LOGIN_START:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+            }
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                loginData: action.payload
+            }
+        case LOGIN_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload,
+            }
         case GET_USERS_START:
             return {
                 ...state,
@@ -33,7 +59,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: '',
-                dumpData: action.payload
+                saltiestUsers: action.payload
             }
         case GET_USERS_FAIL:
             return {
