@@ -10,7 +10,7 @@ import { EditUser } from './components/EditUser';
 import { UserDashboard } from './components/Dashboard';
 import { UserComments } from './components/UserComments';
 
-import { AppStyled } from './components/Styling';
+import { AppStyled, HeaderStyled } from './components/Styling';
 
 
 
@@ -18,7 +18,10 @@ import { AppStyled } from './components/Styling';
 function App() {
   return (
     <AppStyled>
-      <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
+      <HeaderStyled>
+        <h1>hs</h1>
+        <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
+      </HeaderStyled>
       <NavBar />
       <Router>
         <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
