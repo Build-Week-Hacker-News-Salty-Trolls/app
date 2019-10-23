@@ -8,8 +8,8 @@ const NavBar = () => {
             <p>Your UserName</p>
             <a href='/home'>Log Out</a>
             <a href='/home'>Saved Comments</a>
-            <a href='/comments'>Comments</a>
-            <a href='/home'>Usernames</a>
+            <a href='/comments'>Search</a>
+            <a href='/home'>Saltiest Users</a>
         </NavBarStyled>
     )
 }

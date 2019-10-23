@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ContainerStyled } from './Styling';
+import { SearchContainerStyled, SearchStyled, ContainerStyled } from './Styling';
 
 import GeneralCommentCards from './GeneralCommentCards';
 
@@ -31,23 +31,25 @@ const CommentDashboard = () => {
     return (
         <ContainerStyled>
             <form>
-            <input 
-                type="text" 
-                name="search" 
-                placeholder="Search by Salty Hacker Username"
-                onChange={handleChanges}
+                <SearchStyled 
+                    type="text" 
+                    name="search" 
+                    placeholder="Search by Salty Hacker Username"
+                    onChange={handleChanges}
                 />
             </form>
-            {comments.map((comment, index) => {
-                return (
-                    <GeneralCommentCards
-                        key={comment.id}
-                        username={comment.author}
-                        comment={comment.text}
-                        salty_score={comment.salty_score}
-                    />
-                )
-            })}
+            <SearchContainerStyled>
+                {comments.map((comment, index) => {
+                    return (
+                        <GeneralCommentCards
+                            key={index}
+                            username={comment.author}
+                            rank={comment.ranking}
+                            salty_score={comment.total_score}
+                        />
+                    )
+                })}
+            </SearchContainerStyled>
         </ContainerStyled>
     )
 }
