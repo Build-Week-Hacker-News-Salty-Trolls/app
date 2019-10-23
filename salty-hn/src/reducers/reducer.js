@@ -19,7 +19,7 @@ const initialState = {
     dummyData: [],
     // Top 100 saltiest users
     saltiestUsers: [],
-    // Top 10 comments by a specific user(Get this by clicking 'view comments')
+    // Top 10 comments by a specific user(Get this by clicking 'view comments') dynamic render
     userComments: [],
     loginData: {},
     isFetching: false,
