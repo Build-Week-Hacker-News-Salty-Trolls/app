@@ -105,3 +105,16 @@ export const SearchCardStyled = styled.div`
         margin-bottom: 2%;
     }
 `
+
+export const CommentCardStyled = styled.div`
+    width: 80%;
+    padding: 3%;
+    margin: 2% auto 0 auto;
+    background-color: #F7A067;
+    color: black;
+    opacity: 0.8;
+
+    button {
+        margin-bottom: 2%;
+    }
+`

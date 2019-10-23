@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { ContainerStyled, UserCardStyled } from './Styling';
+import { ContainerStyled, CommentCardStyled } from './Styling';
 
 import { getUserComments } from '../actions'
 
@@ -26,10 +26,10 @@ export const UserComments = props => {
             <h2>{props.match.params.author}</h2>
             {comments.map(comment => {
                 return (
-                    <UserCardStyled>
+                    <CommentCardStyled>
                         <p>Salty Score:{comment.salty_score}</p>
                         <p>{comment.text}</p>
-                    </UserCardStyled>
+                    </CommentCardStyled>
                 )
             })}
 
