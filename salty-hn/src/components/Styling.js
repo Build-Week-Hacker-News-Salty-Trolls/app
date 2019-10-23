@@ -84,3 +84,24 @@ export const NavBarStyled = styled.nav`
 export const SearchStyled = styled.input`
     margin: 5%;
 `
+
+export const SearchContainerStyled = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #5D5B5B;
+    width: 100%;
+`
+
+export const SearchCardStyled = styled.div`
+    width: 30%;
+    margin: 2% auto 0 auto;
+    background-color: #F7A067;
+    color: black;
+    opacity: 0.8;
+
+    button {
+        margin-bottom: 2%;
+    }
+`

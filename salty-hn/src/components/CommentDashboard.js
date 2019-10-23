@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ContainerStyled, SearchStyled } from './Styling';
+import { SearchContainerStyled, SearchStyled, ContainerStyled } from './Styling';
 
 import GeneralCommentCards from './GeneralCommentCards';
 
@@ -38,16 +38,18 @@ const CommentDashboard = () => {
                     onChange={handleChanges}
                 />
             </form>
-            {comments.map((comment, index) => {
-                return (
-                    <GeneralCommentCards
-                        key={index}
-                        username={comment.author}
-                        rank={comment.ranking}
-                        salty_score={comment.total_score}
-                    />
-                )
-            })}
+            <SearchContainerStyled>
+                {comments.map((comment, index) => {
+                    return (
+                        <GeneralCommentCards
+                            key={index}
+                            username={comment.author}
+                            rank={comment.ranking}
+                            salty_score={comment.total_score}
+                        />
+                    )
+                })}
+            </SearchContainerStyled>
         </ContainerStyled>
     )
 }
