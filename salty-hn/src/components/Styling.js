@@ -10,7 +10,7 @@ export const AppStyled = styled.div`
     background-color: #ff6600;
 `
 
-export const HeaderStyled = styled.div `
+export const HeaderStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,6 +57,7 @@ export const UserCardStyled = styled.div`
     background-color: #F7A067;
     color: black;
     opacity: 0.8;
+    border-radius: 8px;
 
     button {
         margin-bottom: 2%;
@@ -100,6 +101,7 @@ export const SearchCardStyled = styled.div`
     background-color: #F7A067;
     color: black;
     opacity: 0.8;
+    border-radius: 8px;
 
     button {
         margin-bottom: 2%;
@@ -108,11 +110,12 @@ export const SearchCardStyled = styled.div`
 
 export const CommentCardStyled = styled.div`
     width: 80%;
-    padding: 3%;
+    padding: 1% 3%;
     margin: 2% auto 0 auto;
     background-color: #F7A067;
     color: black;
     opacity: 0.8;
+    border-radius: 8px;
 
     button {
         margin-bottom: 2%;

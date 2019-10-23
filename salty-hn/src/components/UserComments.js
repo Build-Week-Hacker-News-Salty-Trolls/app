@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ContainerStyled, CommentCardStyled } from './Styling';
 
-import { getUserComments } from '../actions'
+import { getUserComments, saveComment } from '../actions'
 
 export const UserComments = props => {
     const dispatch = useDispatch()
@@ -27,8 +27,9 @@ export const UserComments = props => {
             {comments.map(comment => {
                 return (
                     <CommentCardStyled>
-                        <p>Salty Score:{comment.salty_score}</p>
+                        <p>Salty Score: {comment.salty_score}</p>
                         <p>{comment.text}</p>
+                        <button onClick={() => dispatch(saveComment(comment))}>Save Comment</button>
                     </CommentCardStyled>
                 )
             })}

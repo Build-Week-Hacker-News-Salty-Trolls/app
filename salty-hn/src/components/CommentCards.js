@@ -11,8 +11,8 @@ const CommentCards = ({ userInfo, props }) => {
     return (
         <UserCardStyled>
             <h2>Username: {userInfo.author}</h2>
-            <p>Total Salty Score:{userInfo.total_score}</p>
-            <p>Saltiness Rank:{userInfo.ranking}</p>
+            <p>Total Salty Score: {userInfo.total_score}</p>
+            <p>Users Saltiness Rank: {userInfo.ranking}</p>
             <button onClick={() => {
                 props.history.push(`/user-comments/${userInfo.author}`)
             }}>{`View ${userInfo.author}'s Saltiest Comments`}</button>

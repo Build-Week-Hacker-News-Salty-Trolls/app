@@ -10,7 +10,9 @@ import {
     GET_USER_COMMENT_FAIL,
     LOGIN_START,
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOGIN_FAIL,
+    SAVE_START,
+    SAVE_SUCCESS
 } from '../actions'
 
 const initialState = {
@@ -111,6 +113,19 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: action.payload
+            }
+        case SAVE_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case SAVE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                data: action.payload
             }
         default:
             return state
