@@ -6,33 +6,31 @@ import GeneralCommentCards from './GeneralCommentCards';
 
 const CommentDashboard = () => {
     const [comments, setComments] = useState([]);
-    const [query, setQuery] = useState({});
+    const [query, setQuery] = useState("");
 
     const handleChanges = e => {
-        setQuery({...query, [e.target.name]:e.target.value});
+        setQuery(e.target.value);
     }
-
-    const handleSearch = (event) => {
-        const results = comments.filter(username => username.author.toLowerCase().includes(query))
-        setComments(results)
-    }
-    
 
     useEffect(() => {
         axios
             .get('https://salty-salt.herokuapp.com/dump')
             .then(response => {
                 console.log(response);
-                setComments(response.data);
+                const results = response.data.filter(username => 
+                    username.by.toLowerCase().includes(query.toLowerCase()));
+                setComments(results);
             })
             .catch(error => {
                 console.log("there was an error", error)
             })
-    }, [])
+    }, [query])
+    
+    
 
     return (
         <ContainerStyled>
-            <form onChange={handleSearch}>
+            <form>
             <input 
                 type="text" 
                 name="search" 
