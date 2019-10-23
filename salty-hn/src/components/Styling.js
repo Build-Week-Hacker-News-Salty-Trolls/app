@@ -10,6 +10,20 @@ export const AppStyled = styled.div`
     background-color: #ff6600;
 `
 
+export const HeaderStyled = styled.div `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        border: 2px solid black;
+        border-radius: 4px;
+        padding: 1%;
+        margin-right: 3%;
+        font-size: 3rem;
+    }
+`
+
 export const FormStyled = styled(Form)`
     display: flex;
     flex-direction: column;
@@ -43,6 +57,10 @@ export const UserCardStyled = styled.div`
     background-color: #F7A067;
     color: black;
     opacity: 0.8;
+
+    button {
+        margin-bottom: 2%;
+    }
 `
 
 export const NavBarStyled = styled.nav`
@@ -62,4 +80,7 @@ export const NavBarStyled = styled.nav`
             color: #5D5B5B;
         }
     }
+`
+export const SearchStyled = styled.input`
+    margin: 5%;
 `
