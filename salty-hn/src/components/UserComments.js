@@ -21,7 +21,8 @@ export const UserComments = props => {
 
     console.log('Comments in UC component', comments)
     return (
-        <div>
+        <div className="comment-card">
+            <h2>{props.match.params.author}</h2>
             {comments.map(comment => {
                 return (
                     <div>

@@ -31,7 +31,7 @@ export const getUsers = () => dispatch => {
 export const getDummyData = () => dispatch => {
     dispatch({ type: GET_DUMMY_START })
     axios
-        .get('https://salty-salt.herokuapp.com/dump')
+        .get('https://salty-salt.herokuapp.com/user-dump')
         .then(res => {
             console.log('res in getDUMMY', res)
             dispatch({ type: GET_DUMMY_SUCCESS, payload: res.data })
