@@ -5,11 +5,11 @@ const NavBar = () => {
 
     return(
         <NavBarStyled>
-                <p>Your UserName</p>
-                <a href="/home">Log Out</a>
-                <a href="">Saved Comments</a>
-                <a href="/comments">Comments</a>
-                <a href="/home">Usernames</a>
+            <p>Your UserName</p>
+            <a href='/home'>Log Out</a>
+            <a href='/home'>Saved Comments</a>
+            <a href='/comments'>Comments</a>
+            <a href='/home'>Usernames</a>
         </NavBarStyled>
     )
 }
