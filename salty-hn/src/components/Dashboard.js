@@ -8,7 +8,7 @@ import { ContainerStyled } from './Styling';
 import { getUsers, getDummyData, getUserComments } from '../actions'
 
 export const UserDashboard = props => {
-    const userData = useSelector(state => state.dumpData)
+    const userData = useSelector(state => state.saltiestUsers)
     const loading = useSelector(state => state.isFetching)
     const dispatch = useDispatch()
 
