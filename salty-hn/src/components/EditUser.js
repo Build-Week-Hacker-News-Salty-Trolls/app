@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { getUserData } from '../actions'
 // import {editUser} from '../actions'
 
-export const EditUser = () => {
-    // const currentInfo = useSelector(state => state.loginData)
-    const [userInfo, setUserInfo] = useState(useSelector(state => state.loginData))
+export const EditUser = props => {
+    const currentInfo = useSelector(state => state.data)
+    const [userInfo, setUserInfo] = useState({})
     const dispatch = useDispatch()
+
+    console.log(currentInfo)
+
+    useEffect(() => {
+        dispatch(getUserData())
+        setUserInfo(currentInfo)
+    }, [])
+
+    console.log('this is user data', currentInfo)
 
     const handleChanges = e => {
         e.preventDefault()

@@ -12,7 +12,13 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     SAVE_START,
-    SAVE_SUCCESS
+    SAVE_SUCCESS,
+    START_DATA_FETCH,
+    GET_DATA_SUCCESS,
+    GET_DATA_FAIL,
+    USER_REGISTER_START,
+    USER_REGISTER_SUCCESS,
+    USER_REGISTER_FAIL
 } from '../actions'
 
 const initialState = {
@@ -24,13 +30,7 @@ const initialState = {
     // Top 10 comments by a specific user(Get this by clicking 'view comments') dynamic render
     userComments: [],
     // Be sure to change this data point once you can actually login, this is place holder data!
-    loginData: {
-        firstname: 'Tony',
-        lastname: 'Kovar',
-        username: 'tonyrkovar',
-        email: 'tonyrkovar@gmail.com',
-        password: 'lolol.ololol'
-    },
+    loginData: {},
     isFetching: false,
     error: '',
 }
@@ -49,7 +49,6 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: '',
-                loginData: action.payload
             }
         case LOGIN_FAIL:
             return {
@@ -127,6 +126,45 @@ export const reducer = (state = initialState, action) => {
                 error: '',
                 data: action.payload
             }
+        case START_DATA_FETCH:
+            return {
+                ...state,
+                isFetching: false,
+                error: ''
+            }
+        case GET_DATA_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                loginData: action.payload
+            }
+        case GET_DATA_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload
+            }
+        case USER_REGISTER_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case USER_REGISTER_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: '',
+                data: action.payload
+            }
+        case USER_REGISTER_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                error: ''
+            }
+
         default:
             return state
     }
