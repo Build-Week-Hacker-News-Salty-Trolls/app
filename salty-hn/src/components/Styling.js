@@ -22,6 +22,11 @@ export const HeaderStyled = styled.div`
         margin-right: 1.5%;
         font-size: 3rem;
     }
+
+    img {
+        width: 10%;
+        padding: 2%;
+    }
 `
 
 export const FormStyled = styled(Form)`
