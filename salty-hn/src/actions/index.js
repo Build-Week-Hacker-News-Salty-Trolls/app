@@ -18,7 +18,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 
 export const SAVE_START = 'SAVE_START'
-export const SAVE_SUCCESS = 'SAVE_SUCCESS'
+export const SAVE_COMMENT = 'SAVE_COMMENT'
 
 export const START_DATA_FETCH = 'START_DATA_FETCH';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
@@ -30,6 +30,9 @@ export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
 
 export const EDIT_USER_START = 'EDIT_USER_START'
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL'
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS'
+
+
 
 export const getUsers = () => dispatch => {
     dispatch({ type: GET_USERS_START })
@@ -115,12 +118,15 @@ export const userRegister = userInfo => dispatch => {
 
 // this action handles user editing taking the inputs from the EditUser component and over writting the existing data
 
-export const editUser = ({ ...userInfo }, id) => dispatch => {
+export const editUser = (userInfo, id) => dispatch => {
     console.log('working')
     dispatch({ type: EDIT_USER_START })
     console.log('working 2')
     axios
-        .put(`https://sethnadu-foodie-bw.herokuapp.com/users/user/25`, userInfo)
+        .put(`https://sethnadu-foodie-bw.herokuapp.com/users/user/23`, userInfo)
+        .then(res => {
+            dispatch({ type: EDIT_USER_SUCCESS })
+        })
         .catch(err => dispatch({ type: EDIT_USER_FAIL, payload: err.response }))
 }
 
@@ -129,9 +135,11 @@ export const editUser = ({ ...userInfo }, id) => dispatch => {
 
 export const saveComment = (comment) => dispatch => {
     dispatch({ type: SAVE_START })
-    axiosWithAuth()
-        .post('Saved comment endpoint here', comment)
-        .then(dispatch({ type: SAVE_SUCCESS, payload: comment }))
+    console.log(comment)
+    // axiosWithAuth()
+    //     .post('Saved comment endpoint here', comment)
+    //     .then(dispatch({ type: SAVE_SUCCESS, payload: comment }))
+    dispatch({ type: SAVE_COMMENT, payload: comment })
     console.log(comment)
 }
 
