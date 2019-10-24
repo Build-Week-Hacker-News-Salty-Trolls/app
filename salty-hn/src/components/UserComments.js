@@ -20,7 +20,6 @@ export const UserComments = props => {
         )
     }
 
-    console.log('Comments in UC component', comments)
     return (
         <ContainerStyled>
             <h2>{props.match.params.author}</h2>

@@ -7,10 +7,8 @@ import { useDispatch } from 'react-redux'
 import { FormStyled, FieldStyled, ButtonStyled } from './Styling';
 import { userLogin } from '../actions';
 
-const UserLogIn = ({ values, touched, errors, handleSubmit }) => {
-    const dispatch = useDispatch()
+const UserLogIn = ({ values, touched, errors, handleSubmit }, props) => {
     // use values.userName etc to access state
-    // console.log('username', values.username, 'pass', values.password)
     return (
         <div>
             <FormStyled onSubmit={handleSubmit}>
@@ -32,6 +30,7 @@ const UserLogIn = ({ values, touched, errors, handleSubmit }) => {
                 )}
                 <ButtonStyled type="submit">Log In</ButtonStyled>
             </FormStyled >
+            <p>Not a user? <a href='/register'>Register</a></p>
         </div>
     )
 }

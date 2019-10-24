@@ -10,29 +10,12 @@ import { FieldStyled, FormStyled, ButtonStyled } from './Styling';
 
 
 const UserRegistration = ({ values, touched, errors, handleSubmit }) => {
-    const dispatch = useDispatch()
     // use values.userName etc to access state
     console.log(values)
 
     return (
         <div>
             <FormStyled onSubmit={handleSubmit}>
-                {/* <FieldStyled
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                />
-                {touched.firstName && errors.firstName && (
-                    <p className="error">{errors.firstName}</p>
-                )}
-                <FieldStyled
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                />
-                {touched.lastName && errors.lastName && (
-                    <p className="error">{errors.lastName}</p>
-                )} */}
                 <FieldStyled
                     type="text"
                     name="username"
@@ -69,9 +52,6 @@ const FormikUserRegistration = withFormik({
     mapPropsToValues({ username, email, password }) {
 
         return {
-            //commenting out first name and last name because the back end I'm using can't take them
-            // firstName: "",
-            // lastName: "",
             username: username || "",
             email: email || "",
             password: password || "",
@@ -79,10 +59,6 @@ const FormikUserRegistration = withFormik({
     },
 
     validationSchema: Yup.object().shape({
-        // firstName: Yup.string()
-        //     .required("Just make one up if you want"),
-        // lastName: Yup.string()
-        //     .required("Just use Smith if it makes you more comfortable"),
         username: Yup.string()
             .min(4, "Usernames need to be at least 4 characters long")
             .required("We need to know who you really are"),
@@ -96,7 +72,7 @@ const FormikUserRegistration = withFormik({
     handleSubmit(values, { props }) {
         console.log(values, 'this is props', props)
         props.dispatch(userRegister(values))
-        // props.history.push('/home')
+        props.history.push('/login')
     }
 })(UserRegistration)
 
