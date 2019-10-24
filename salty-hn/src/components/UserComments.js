@@ -8,6 +8,7 @@ import { getUserComments, saveComment } from '../actions'
 export const UserComments = props => {
     const dispatch = useDispatch()
     const comments = useSelector(state => state.userComments)
+    const savedComment = useSelector(state => state.savedComments)
     const loading = useSelector(state => state.isFetching)
     // const [commentToSave, setComment] = useLocalStorage(['comments'])
 
@@ -23,6 +24,7 @@ export const UserComments = props => {
         )
     }
 
+    comments.filter(com => com !== savedComment)
 
     return (
         <ContainerStyled>

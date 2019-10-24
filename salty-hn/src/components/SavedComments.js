@@ -14,7 +14,7 @@ export const SavedComments = () => {
                 return (
                     <>
                         <p>{comment.text}</p>
-                        <button onClick={() => dispatch(deleteComment(comment.salty_score))}>Delete Comments</button>
+                        <button onClick={() => dispatch(deleteComment(comment.salty_score))}>Delete Comment</button>
                     </>
                 )
             })}

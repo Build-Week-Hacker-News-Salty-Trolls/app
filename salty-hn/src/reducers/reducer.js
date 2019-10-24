@@ -21,7 +21,8 @@ import {
     EDIT_USER_FAIL,
     EDIT_USER_SUCCESS,
     SAVE_COMMENT,
-    DELETE_COMMENT
+    DELETE_COMMENT,
+    FILTER_COMMENTS
 } from '../actions'
 
 
@@ -177,15 +178,19 @@ export const reducer = (state = initialState, action) => {
                 error: ''
             }
         case SAVE_COMMENT:
-            console.log(action.payload, 'in switch', state.savedComments)
             return {
                 ...state,
-                savedComments: [...state.savedComments, action.payload]
+                savedComments: ([...state.savedComments, action.payload])
             }
         case DELETE_COMMENT:
             return {
                 ...state,
                 savedComments: state.savedComments.filter(({ salty_score }) => salty_score !== action.payload)
+            }
+        case FILTER_COMMENTS:
+            return {
+                ...state,
+                userComments: state.userComments.filter(comment => comment !== action.payload)
             }
         default:
             return state
