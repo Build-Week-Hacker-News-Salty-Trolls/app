@@ -19,11 +19,6 @@ import { PrivateRoute } from './utils/PrivateRoute'
 
 
 function App() {
-  // const [savedComment, setSavedComment] = useState([])
-
-  // const addSavedComment = comment => {
-  //   setSavedComment(comment)
-  // }
   return (
     <AppStyled>
       <HeaderStyled>
