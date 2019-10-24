@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
-import FormikUserLogin from './components/UserLogin';
-import FormikUserRegistration from './components/UserRegister';
+import FormikLoginWrapper from './components/UserLogin';
+import FormikUserRegistrationWrapper from './components/UserRegister';
 import NavBar from './components/NavBar';
 import CommentDashboard from './components/CommentDashboard';
 import { EditUser } from './components/EditUser';
@@ -12,6 +12,7 @@ import { UserComments } from './components/UserComments';
 
 import { AppStyled, HeaderStyled } from './components/Styling';
 import { SavedComments } from './components/SavedComments';
+import { PrivateRoute } from './utils/PrivateRoute'
 
 
 
@@ -25,10 +26,10 @@ function App() {
       </HeaderStyled>
       <NavBar />
       <Router>
-        <Route path="/Login" render={props => <FormikUserLogin {...props} />} />
-        <Route path="/Register" render={props => <FormikUserRegistration {...props} />} />
+        <Route path="/Login" render={props => <FormikLoginWrapper {...props} />} />
+        <Route path="/Register" render={props => <FormikUserRegistrationWrapper {...props} />} />
         <Route path='/edit-user' component={EditUser} />
-        <Route path='/home' component={UserDashboard} />
+        <PrivateRoute path='/home' component={UserDashboard} />
         <Route path='/user-comments/:author' component={UserComments} />
         <Route path='/saved-comments' component={SavedComments} />
         <Route path='/comments' component={CommentDashboard} />
