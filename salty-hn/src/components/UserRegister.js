@@ -1,19 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+
+import { userRegister } from '../actions'
 
 import { FieldStyled, FormStyled, ButtonStyled } from './Styling';
 
 
 
-const UserRegistration = ({ values, touched, errors }) => {
+const UserRegistration = ({ values, touched, errors, handleSubmit }) => {
+    const dispatch = useDispatch()
     // use values.userName etc to access state
-    console.log(values.firstName)
-    
-    return(
+    console.log(values)
+
+    return (
         <div>
-            <FormStyled>
-                <FieldStyled
+            <FormStyled onSubmit={handleSubmit}>
+                {/* <FieldStyled
                     type="text"
                     name="firstName"
                     placeholder="First Name"
@@ -28,10 +32,10 @@ const UserRegistration = ({ values, touched, errors }) => {
                 />
                 {touched.lastName && errors.lastName && (
                     <p className="error">{errors.lastName}</p>
-                )}
+                )} */}
                 <FieldStyled
                     type="text"
-                    name="userName"
+                    name="username"
                     placeholder="username"
                 />
                 {touched.userName && errors.userName && (
@@ -46,7 +50,7 @@ const UserRegistration = ({ values, touched, errors }) => {
                     <p className="error">{errors.email}</p>
                 )}
 
-                <FieldStyled 
+                <FieldStyled
                     type="password"
                     name="password"
                     placeholder="password"
@@ -62,23 +66,24 @@ const UserRegistration = ({ values, touched, errors }) => {
 
 
 const FormikUserRegistration = withFormik({
-    mapPropsToValues() {
+    mapPropsToValues({ username, email, password }) {
 
         return {
-            firstName: "",
-            lastName: "",
-            userName: "",
-            email: "",
-            password: "",
+            //commenting out first name and last name because the back end I'm using can't take them
+            // firstName: "",
+            // lastName: "",
+            username: username || "",
+            email: email || "",
+            password: password || "",
         }
     },
 
     validationSchema: Yup.object().shape({
-        firstName: Yup.string()
-            .required("Just make one up if you want"),
-        lastName: Yup.string()
-            .required("Just use Smith if it makes you more comfortable"),
-        userName: Yup.string()
+        // firstName: Yup.string()
+        //     .required("Just make one up if you want"),
+        // lastName: Yup.string()
+        //     .required("Just use Smith if it makes you more comfortable"),
+        username: Yup.string()
             .min(4, "Usernames need to be at least 4 characters long")
             .required("We need to know who you really are"),
         email: Yup.string()
@@ -87,7 +92,22 @@ const FormikUserRegistration = withFormik({
         password: Yup.string()
             .min(6, "Little longer please (at least 6 characters)")
             .required("Can't get in without a password")
-    })
+    }),
+    handleSubmit(values, { props }) {
+        console.log(values, 'this is props', props)
+        props.dispatch(userRegister(values))
+        // props.history.push('/home')
+    }
 })(UserRegistration)
 
-export default FormikUserRegistration
+const FormikUserRegistrationWrapper = props => {
+    const dispatch = useDispatch();
+    return (
+        <>
+            <FormikUserRegistration dispatch={dispatch} history={props.history} />
+        </>
+    )
+}
+
+
+export default FormikUserRegistrationWrapper

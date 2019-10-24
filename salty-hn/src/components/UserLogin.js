@@ -2,21 +2,25 @@ import React from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { FormStyled, FieldStyled, ButtonStyled } from './Styling';
+import { useDispatch } from 'react-redux'
 
-const UserLogIn = ({ values, touched, errors}) => {
+import { FormStyled, FieldStyled, ButtonStyled } from './Styling';
+import { userLogin } from '../actions';
+
+const UserLogIn = ({ values, touched, errors, handleSubmit }) => {
+    const dispatch = useDispatch()
     // use values.userName etc to access state
-    console.log(values.userName)
+    // console.log('username', values.username, 'pass', values.password)
     return (
         <div>
-            <FormStyled>
-                <FieldStyled 
-                    type="text" 
-                    name="userName" 
+            <FormStyled onSubmit={handleSubmit}>
+                <FieldStyled
+                    type="text"
+                    name="username"
                     placeholder="username"
                 />
-                {touched.userName && errors.userName && (
-                    <p className="error">{errors.userName}</p>
+                {touched.username && errors.username && (
+                    <p className="error">{errors.username}</p>
                 )}
                 <FieldStyled
                     type="password"
@@ -33,24 +37,41 @@ const UserLogIn = ({ values, touched, errors}) => {
 }
 
 const FormikUserLogIn = withFormik({
-    mapPropsToValues({ userName, password }){
-        
-        return{
+    mapPropsToValues({ username, password }) {
 
-            userName: userName || "",
-            password: ""
+        return {
+
+            username: username || "",
+            password: password || ""
         }
     },
 
     validationSchema: Yup.object().shape({
-        userName: Yup.string()
-            .min(4, "Usernames need to be at least 4 characters long")
+        username: Yup.string()
+            .min(3, "Usernames need to be at least 3 characters long")
             .required("We need to know who you are!"),
         password: Yup.string()
             .min(6, "Little longer please (at least 6 characters)")
             .required("Can't get in without a password")
-    })
+    }),
+    handleSubmit(values, { props }) {
+        console.log(values, 'this is props', props)
+        props.dispatch(userLogin(values))
+        props.history.push('/home')
+    }
 })(UserLogIn)
 
+const FormikLoginWrapper = props => {
+    const dispatch = useDispatch();
+    return (
+        <>
+            <FormikUserLogIn dispatch={dispatch} history={props.history} />
+        </>
+    )
+}
 
-export default FormikUserLogIn
+
+
+
+
+export default FormikLoginWrapper
