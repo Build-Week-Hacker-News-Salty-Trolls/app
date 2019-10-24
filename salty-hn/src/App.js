@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
@@ -18,11 +18,16 @@ import { PrivateRoute } from './utils/PrivateRoute'
 
 
 function App() {
+  // const [savedComment, setSavedComment] = useState([])
+
+  // const addSavedComment = comment => {
+  //   setSavedComment(comment)
+  // }
   return (
     <AppStyled>
       <HeaderStyled>
         <h1>hs</h1>
-        <p>hack_salt - The saltiest Hacker News trolls, all in one place!</p>
+        <p>The saltiest Hacker News trolls, all in one place!</p>
       </HeaderStyled>
       <NavBar />
       <Router>

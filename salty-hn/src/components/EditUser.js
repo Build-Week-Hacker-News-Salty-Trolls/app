@@ -30,7 +30,6 @@ export const EditUser = props => {
     }
 
     return (
-        // <form onSubmit={() => dispatch(editUser(userInfo, userInfo.id))}>
         // This form tag is a place holder until I get my API end points
         <form onSubmit={() => dispatch(editUser(userInfo, currentInfo.id))}>
             <input

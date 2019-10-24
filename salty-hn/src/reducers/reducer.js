@@ -20,10 +20,14 @@ import {
     USER_REGISTER_SUCCESS,
     USER_REGISTER_FAIL,
     EDIT_USER_START,
-    EDIT_USER_FAIL
+    EDIT_USER_FAIL,
+    EDIT_USER_SUCCESS,
+    SAVE_COMMENT
 } from '../actions'
 
 const initialState = {
+    // Will house saved comments
+    savedComments: [],
     data: [],
     // 18k misc salty comments  
     dummyData: [],
@@ -122,13 +126,13 @@ export const reducer = (state = initialState, action) => {
                 isFetching: true,
                 error: ''
             }
-        case SAVE_SUCCESS:
-            return {
-                ...state,
-                isFetching: false,
-                error: '',
-                data: action.payload
-            }
+        // case SAVE_SUCCESS:
+        //     return {
+        //         ...state,
+        //         isFetching: false,
+        //         error: '',
+        //         data: action.payload
+        //     }
         case START_DATA_FETCH:
             return {
                 ...state,
@@ -178,6 +182,17 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: ''
+            }
+        case EDIT_USER_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                error: ''
+            }
+        case SAVE_COMMENT:
+            return {
+                ...state,
+                savedComments: { ...action.payload }
             }
         default:
             return state

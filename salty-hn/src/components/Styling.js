@@ -19,7 +19,7 @@ export const HeaderStyled = styled.div`
         border: 2px solid black;
         border-radius: 4px;
         padding: 1%;
-        margin-right: 3%;
+        margin-right: 1.5%;
         font-size: 3rem;
     }
 `
