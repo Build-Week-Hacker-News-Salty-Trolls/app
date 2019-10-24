@@ -17,7 +17,7 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 
-export const SAVE_START = 'SAVE_START'
+// export const SAVE_START = 'SAVE_START'
 export const SAVE_COMMENT = 'SAVE_COMMENT'
 
 export const START_DATA_FETCH = 'START_DATA_FETCH';
@@ -134,14 +134,15 @@ export const editUser = (userInfo, id) => dispatch => {
 // This action will push the selected comment into the end point that holds saved comments
 
 export const saveComment = (comment) => dispatch => {
-    dispatch({ type: SAVE_START })
-    console.log(comment)
-    // axiosWithAuth()
-    //     .post('Saved comment endpoint here', comment)
-    //     .then(dispatch({ type: SAVE_SUCCESS, payload: comment }))
     dispatch({ type: SAVE_COMMENT, payload: comment })
-    console.log(comment)
+    console.log('comment in Action', comment)
 }
+
+// export const saveComment = comment => {
+//     return {
+//         type: SAVE_COMMENT, payload: comment
+//     }
+// }
 
 // this action will remove any saved comment the user doesn't want to see anymore
 
