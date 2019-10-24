@@ -11,8 +11,6 @@ import {
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    SAVE_START,
-    SAVE_SUCCESS,
     START_DATA_FETCH,
     GET_DATA_SUCCESS,
     GET_DATA_FAIL,
@@ -22,8 +20,9 @@ import {
     EDIT_USER_START,
     EDIT_USER_FAIL,
     EDIT_USER_SUCCESS,
-    SAVE_COMMENT
+    SAVE_COMMENT,
 } from '../actions'
+
 
 const initialState = {
     // Will house saved comments
@@ -120,19 +119,6 @@ export const reducer = (state = initialState, action) => {
                 isFetching: false,
                 error: action.payload
             }
-        case SAVE_START:
-            return {
-                ...state,
-                isFetching: true,
-                error: ''
-            }
-        // case SAVE_SUCCESS:
-        //     return {
-        //         ...state,
-        //         isFetching: false,
-        //         error: '',
-        //         data: action.payload
-        //     }
         case START_DATA_FETCH:
             return {
                 ...state,
@@ -190,9 +176,10 @@ export const reducer = (state = initialState, action) => {
                 error: ''
             }
         case SAVE_COMMENT:
+            console.log(action.payload, 'in switch', state.savedComments)
             return {
                 ...state,
-                savedComments: { ...action.payload }
+                savedComments: [...state.savedComments, action.payload]
             }
         default:
             return state
