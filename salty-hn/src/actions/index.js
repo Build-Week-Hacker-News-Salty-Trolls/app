@@ -33,6 +33,7 @@ export const EDIT_USER_FAIL = 'EDIT_USER_FAIL'
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS'
 
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const FILTER_COMMENTS = 'FILTER_COMMENTS'
 
 
 
@@ -126,6 +127,7 @@ export const editUser = (userInfo, id) => dispatch => {
 
 export const saveComment = (comment) => dispatch => {
     dispatch({ type: SAVE_COMMENT, payload: comment })
+    dispatch({ type: FILTER_COMMENTS, payload: comment })
 }
 
 
