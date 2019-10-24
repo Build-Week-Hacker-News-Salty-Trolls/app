@@ -5,9 +5,10 @@ import axios from 'axios';
 export const axiosWithAuth = () => {
     const token = localStorage.getItem('token')
     return axios.create({
-        baseURL: 'API HERE',
+        baseURL: 'https://sethnadu-foodie-bw.herokuapp.com',
         headers: {
-            Authorization: token
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
         }
     })
 }
