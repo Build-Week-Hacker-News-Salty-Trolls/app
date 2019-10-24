@@ -29,8 +29,8 @@ function App() {
         <h1>hs</h1>
         <p>The saltiest Hacker News trolls, all in one place!</p>
       </HeaderStyled>
-      <NavBar />
       <Router>
+        <NavBar />
         <Route path="/Login" render={props => <FormikLoginWrapper {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistrationWrapper {...props} />} />
         <Route path='/edit-user' component={EditUser} />

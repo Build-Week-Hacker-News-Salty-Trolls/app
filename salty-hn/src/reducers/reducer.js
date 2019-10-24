@@ -23,6 +23,7 @@ import {
     SAVE_COMMENT,
 } from '../actions'
 
+
 const initialState = {
     // Will house saved comments
     savedComments: [],
@@ -175,7 +176,7 @@ export const reducer = (state = initialState, action) => {
                 error: ''
             }
         case SAVE_COMMENT:
-            console.log(action.payload, 'in switch')
+            console.log(action.payload, 'in switch', state.savedComments)
             return {
                 ...state,
                 savedComments: [...state.savedComments, action.payload]

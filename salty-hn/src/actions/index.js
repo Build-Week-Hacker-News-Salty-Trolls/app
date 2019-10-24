@@ -39,7 +39,6 @@ export const getUsers = () => dispatch => {
     axios
         .get('https://salty-salt.herokuapp.com/salty-users')
         .then(res => {
-            console.log('res in getUSERS', res)
             dispatch({ type: GET_USERS_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_USERS_FAIL, payload: err.response }))
@@ -50,7 +49,6 @@ export const getDummyData = () => dispatch => {
     axios
         .get('https://salty-salt.herokuapp.com/user-dump')
         .then(res => {
-            console.log('res in getDUMMY', res)
             dispatch({ type: GET_DUMMY_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_DUMMY_FAIL, payload: err.response }))
@@ -61,7 +59,6 @@ export const getUserComments = (userName) => dispatch => {
     axios
         .get(`https://salty-salt.herokuapp.com/user-comments/${userName}`)
         .then(res => {
-            console.log('res in getUSER_COMMENT', res)
             dispatch({ type: GET_USER_COMMENT_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_USER_COMMENT_FAIL, payload: err.response }))
@@ -80,7 +77,6 @@ export const userLogin = (loginInfo) => dispatch => {
             }
         )
         .then((res) => {
-            console.log('res on login', res, loginInfo)
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             localStorage.setItem('token', res.data.access_token)
         })
@@ -88,13 +84,10 @@ export const userLogin = (loginInfo) => dispatch => {
 }
 
 export const getUserData = () => dispatch => {
-    console.log('get user fired')
     dispatch({ type: START_DATA_FETCH })
-    console.log('get user fired 2')
     axiosWithAuth()
         .get(`https://sethnadu-foodie-bw.herokuapp.com/users/users`)
         .then(res => {
-            console.log('get user fired 4', res)
             dispatch({ type: GET_DATA_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_DATA_FAIL, payload: err.response }))
@@ -108,7 +101,6 @@ export const userRegister = userInfo => dispatch => {
         .post('https://sethnadu-foodie-bw.herokuapp.com/createnewuser', userInfo)
         .then(res => {
             dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data })
-            console.log('registration res', res)
         })
         .catch(err => {
             console.log('error', err)
@@ -119,9 +111,7 @@ export const userRegister = userInfo => dispatch => {
 // this action handles user editing taking the inputs from the EditUser component and over writting the existing data
 
 export const editUser = (userInfo, id) => dispatch => {
-    console.log('working')
     dispatch({ type: EDIT_USER_START })
-    console.log('working 2')
     axios
         .put(`https://sethnadu-foodie-bw.herokuapp.com/users/user/23`, userInfo)
         .then(res => {
@@ -135,14 +125,8 @@ export const editUser = (userInfo, id) => dispatch => {
 
 export const saveComment = (comment) => dispatch => {
     dispatch({ type: SAVE_COMMENT, payload: comment })
-    console.log('comment in Action', comment)
 }
 
-// export const saveComment = comment => {
-//     return {
-//         type: SAVE_COMMENT, payload: comment
-//     }
-// }
 
 // this action will remove any saved comment the user doesn't want to see anymore
 
