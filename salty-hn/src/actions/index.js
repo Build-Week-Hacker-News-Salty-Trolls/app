@@ -28,6 +28,9 @@ export const USER_REGISTER_START = 'USER_REGISTER_START';
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
 export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
 
+export const EDIT_USER_START = 'EDIT_USER_START'
+export const EDIT_USER_FAIL = 'EDIT_USER_FAIL'
+
 export const getUsers = () => dispatch => {
     dispatch({ type: GET_USERS_START })
     axios
@@ -73,20 +76,22 @@ export const userLogin = (loginInfo) => dispatch => {
                 }
             }
         )
-        .then(res => {
-            // console.log('res on login', res)
+        .then((res) => {
+            console.log('res on login', res, loginInfo)
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             localStorage.setItem('token', res.data.access_token)
         })
         .catch(err => dispatch({ type: LOGIN_FAIL, payload: err.response }))
 }
 
-export const getUserData = username => dispatch => {
+export const getUserData = () => dispatch => {
+    console.log('get user fired')
     dispatch({ type: START_DATA_FETCH })
+    console.log('get user fired 2')
     axiosWithAuth()
-        .get(`https://sethnadu-foodie-bw.herokuapp.com/users/user/usernames`)
+        .get(`https://sethnadu-foodie-bw.herokuapp.com/users/users`)
         .then(res => {
-            console.log(res)
+            console.log('get user fired 4', res)
             dispatch({ type: GET_DATA_SUCCESS, payload: res.data })
         })
         .catch(err => dispatch({ type: GET_DATA_FAIL, payload: err.response }))
@@ -110,12 +115,14 @@ export const userRegister = userInfo => dispatch => {
 
 // this action handles user editing taking the inputs from the EditUser component and over writting the existing data
 
-// export const editUser = (userInfo, id) => dispatch => {
-//     dispatch({ type: EDIT_USER_START})
-//     axiosWithAuth()
-//         .put('api here w/ userid', userInfo)
-//         .catch(err => dispatch({type: EDIT_USER_FAIL, payload: err.response}))
-// }
+export const editUser = ({ ...userInfo }, id) => dispatch => {
+    console.log('working')
+    dispatch({ type: EDIT_USER_START })
+    console.log('working 2')
+    axiosWithAuth()
+        .put(`https://sethnadu-foodie-bw.herokuapp.com/users/user/25`, userInfo)
+        .catch(err => dispatch({ type: EDIT_USER_FAIL, payload: err.response }))
+}
 
 
 // This action will push the selected comment into the end point that holds saved comments
