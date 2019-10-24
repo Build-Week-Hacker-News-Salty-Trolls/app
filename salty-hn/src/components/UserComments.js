@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ContainerStyled, CommentCardStyled } from './Styling';
-import useLocalStorage from 'react-use-localstorage';
-import { Link } from 'react-router-dom'
 
 import { getUserComments, saveComment } from '../actions'
-import { comment } from 'postcss';
+
 
 export const UserComments = props => {
     const dispatch = useDispatch()

@@ -32,6 +32,8 @@ export const EDIT_USER_START = 'EDIT_USER_START'
 export const EDIT_USER_FAIL = 'EDIT_USER_FAIL'
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS'
 
+export const DELETE_COMMENT = 'DELETE_COMMENT'
+
 
 
 export const getUsers = () => dispatch => {
@@ -120,7 +122,6 @@ export const editUser = (userInfo, id) => dispatch => {
         .catch(err => dispatch({ type: EDIT_USER_FAIL, payload: err.response }))
 }
 
-
 // This action will push the selected comment into the end point that holds saved comments
 
 export const saveComment = (comment) => dispatch => {
@@ -128,6 +129,9 @@ export const saveComment = (comment) => dispatch => {
 }
 
 
+export const deleteComment = saltyScore => dispatch => {
+    dispatch({ type: DELETE_COMMENT, payload: saltyScore })
+}
 // this action will remove any saved comment the user doesn't want to see anymore
 
 // export const deleteSavedComment = id => dispatch => {

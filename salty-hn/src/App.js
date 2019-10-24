@@ -19,11 +19,6 @@ import { PrivateRoute } from './utils/PrivateRoute'
 
 
 function App() {
-  // const [savedComment, setSavedComment] = useState([])
-
-  // const addSavedComment = comment => {
-  //   setSavedComment(comment)
-  // }
   return (
     <AppStyled>
       <HeaderStyled>
@@ -33,13 +28,13 @@ function App() {
       </HeaderStyled>
       <Router>
         <NavBar />
+        <PrivateRoute path='/home' component={UserDashboard} />
         <Route path="/Login" render={props => <FormikLoginWrapper {...props} />} />
         <Route path="/Register" render={props => <FormikUserRegistrationWrapper {...props} />} />
-        <Route path='/edit-user' component={EditUser} />
-        <PrivateRoute path='/home' component={UserDashboard} />
-        <Route path='/user-comments/:author' component={UserComments} />
-        <Route path='/saved-comments' component={SavedComments} />
-        <Route path='/comments' component={CommentDashboard} />
+        <PrivateRoute path='/edit-user' component={EditUser} />
+        <PrivateRoute path='/user-comments/:author' component={UserComments} />
+        <PrivateRoute path='/saved-comments' component={SavedComments} />
+        <PrivateRoute path='/comments' component={CommentDashboard} />
       </Router>
     </AppStyled>
   );

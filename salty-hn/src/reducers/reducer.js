@@ -21,6 +21,7 @@ import {
     EDIT_USER_FAIL,
     EDIT_USER_SUCCESS,
     SAVE_COMMENT,
+    DELETE_COMMENT
 } from '../actions'
 
 
@@ -180,6 +181,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 savedComments: [...state.savedComments, action.payload]
+            }
+        case DELETE_COMMENT:
+            return {
+                ...state,
+                savedComments: state.savedComments.filter(({ salty_score }) => salty_score !== action.payload)
             }
         default:
             return state
