@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
@@ -9,6 +9,7 @@ import CommentDashboard from './components/CommentDashboard';
 import { EditUser } from './components/EditUser';
 import { UserDashboard } from './components/Dashboard';
 import { UserComments } from './components/UserComments';
+import { Logo } from './components/Logo';
 
 import { AppStyled, HeaderStyled } from './components/Styling';
 import { SavedComments } from './components/SavedComments';
@@ -28,6 +29,7 @@ function App() {
       <HeaderStyled>
         <h1>hs</h1>
         <p>The saltiest Hacker News trolls, all in one place!</p>
+        <Logo />
       </HeaderStyled>
       <NavBar />
       <Router>
