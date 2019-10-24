@@ -18,7 +18,9 @@ import {
     GET_DATA_FAIL,
     USER_REGISTER_START,
     USER_REGISTER_SUCCESS,
-    USER_REGISTER_FAIL
+    USER_REGISTER_FAIL,
+    EDIT_USER_START,
+    EDIT_USER_FAIL
 } from '../actions'
 
 const initialState = {
@@ -49,6 +51,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: '',
+                loginData: action.payload
             }
         case LOGIN_FAIL:
             return {
@@ -164,7 +167,18 @@ export const reducer = (state = initialState, action) => {
                 isFetching: false,
                 error: ''
             }
-
+        case EDIT_USER_START:
+            return {
+                ...state,
+                isFetching: false,
+                error: ''
+            }
+        case EDIT_USER_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                error: ''
+            }
         default:
             return state
     }
