@@ -119,7 +119,7 @@ export const editUser = ({ ...userInfo }, id) => dispatch => {
     console.log('working')
     dispatch({ type: EDIT_USER_START })
     console.log('working 2')
-    axiosWithAuth()
+    axios
         .put(`https://sethnadu-foodie-bw.herokuapp.com/users/user/25`, userInfo)
         .catch(err => dispatch({ type: EDIT_USER_FAIL, payload: err.response }))
 }
