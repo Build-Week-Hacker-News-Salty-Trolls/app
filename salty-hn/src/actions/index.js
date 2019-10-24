@@ -20,6 +20,14 @@ export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const SAVE_START = 'SAVE_START'
 export const SAVE_SUCCESS = 'SAVE_SUCCESS'
 
+export const START_DATA_FETCH = 'START_DATA_FETCH';
+export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
+export const GET_DATA_FAIL = 'GET_DATA_FAIL';
+
+export const USER_REGISTER_START = 'USER_REGISTER_START';
+export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
+export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
+
 export const getUsers = () => dispatch => {
     dispatch({ type: GET_USERS_START })
     axios
@@ -53,25 +61,52 @@ export const getUserComments = (userName) => dispatch => {
         .catch(err => dispatch({ type: GET_USER_COMMENT_FAIL, payload: err.response }))
 }
 
-export const userLogin = loginInfo => dispatch => {
+export const userLogin = (loginInfo) => dispatch => {
     dispatch({ type: LOGIN_START })
     axiosWithAuth()
-        .post('login point here', loginInfo)
+        .post('/login',
+            `grant_type=password&username=${loginInfo.username}&password=${loginInfo.password}`,
+            {
+                headers: {
+                    Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            }
+        )
         .then(res => {
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload })
-            localStorage.setItem('token', res.data.payload)
+            // console.log('res on login', res)
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+            localStorage.setItem('token', res.data.access_token)
         })
         .catch(err => dispatch({ type: LOGIN_FAIL, payload: err.response }))
 }
 
+export const getUserData = username => dispatch => {
+    dispatch({ type: START_DATA_FETCH })
+    axiosWithAuth()
+        .get(`https://sethnadu-foodie-bw.herokuapp.com/users/user/usernames`)
+        .then(res => {
+            console.log(res)
+            dispatch({ type: GET_DATA_SUCCESS, payload: res.data })
+        })
+        .catch(err => dispatch({ type: GET_DATA_FAIL, payload: err.response }))
+}
+
 //This action handles user registration push the inputed data to BE server 
 
-// export const userRegister = userInfo => dispatch => {
-//     dispatch({ type: USER_REGISTER_START })
-//     axiosWithAuth()
-//         .post('API HERE', userInfo)
-//         .catch(err => dispatch({ type: USER_REGISTER_FAIL, payload: err.response }))
-// }
+export const userRegister = userInfo => dispatch => {
+    dispatch({ type: USER_REGISTER_START })
+    axios
+        .post('https://sethnadu-foodie-bw.herokuapp.com/createnewuser', userInfo)
+        .then(res => {
+            dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data })
+            console.log('registration res', res)
+        })
+        .catch(err => {
+            console.log('error', err)
+            dispatch({ type: USER_REGISTER_FAIL, payload: err.response })
+        })
+}
 
 // this action handles user editing taking the inputs from the EditUser component and over writting the existing data
 
