@@ -21,8 +21,8 @@ const UserRegistration = ({ values, touched, errors, handleSubmit }) => {
                     name="username"
                     placeholder="username"
                 />
-                {touched.userName && errors.userName && (
-                    <p className="error">{errors.userName}</p>
+                {touched.username && errors.username && (
+                    <p className="error">{errors.username}</p>
                 )}
                 <FieldStyled
                     type="text"
