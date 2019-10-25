@@ -76,11 +76,13 @@ export const NavBarStyled = styled.nav`
     margin: 2% auto;
     width: 100%;
     align-items: flex-end;
+   
 
     a, p {
         text-decoration: none;
         margin: 0 3%;
         color: black;
+        outline: 0;
 
         :hover {
             color: #5D5B5B;

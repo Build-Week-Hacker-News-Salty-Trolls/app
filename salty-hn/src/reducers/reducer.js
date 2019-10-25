@@ -1,24 +1,12 @@
 import {
-    GET_USERS_START,
+    REQUEST_START,
+    REQUEST_FAIL,
     GET_USERS_SUCCESS,
-    GET_USERS_FAIL,
-    GET_DUMMY_START,
     GET_DUMMY_SUCCESS,
-    GET_DUMMY_FAIL,
-    GET_USER_COMMENT_START,
     GET_USER_COMMENT_SUCCESS,
-    GET_USER_COMMENT_FAIL,
-    LOGIN_START,
     LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    START_DATA_FETCH,
     GET_DATA_SUCCESS,
-    GET_DATA_FAIL,
-    USER_REGISTER_START,
     USER_REGISTER_SUCCESS,
-    USER_REGISTER_FAIL,
-    EDIT_USER_START,
-    EDIT_USER_FAIL,
     EDIT_USER_SUCCESS,
     SAVE_COMMENT,
     DELETE_COMMENT,
@@ -45,10 +33,10 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case LOGIN_START:
+        case REQUEST_START:
             return {
                 ...state,
-                isFetching: false,
+                isFetching: true,
                 error: '',
             }
         case LOGIN_SUCCESS:
@@ -58,17 +46,11 @@ export const reducer = (state = initialState, action) => {
                 error: '',
                 loginData: action.payload
             }
-        case LOGIN_FAIL:
+        case REQUEST_FAIL:
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload,
-            }
-        case GET_USERS_START:
-            return {
-                ...state,
-                isFetching: true,
-                error: ''
             }
         case GET_USERS_SUCCESS:
             return {
@@ -77,36 +59,12 @@ export const reducer = (state = initialState, action) => {
                 error: '',
                 saltiestUsers: action.payload
             }
-        case GET_USERS_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            }
-        case GET_DUMMY_START:
-            return {
-                ...state,
-                isFetching: false,
-                error: '',
-            }
         case GET_DUMMY_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
                 dummyData: action.payload
-            }
-        case GET_DUMMY_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload,
-            }
-        case GET_USER_COMMENT_START:
-            return {
-                ...state,
-                isFetching: false,
-                error: '',
             }
         case GET_USER_COMMENT_SUCCESS:
             return {
@@ -115,18 +73,6 @@ export const reducer = (state = initialState, action) => {
                 error: '',
                 userComments: action.payload
             }
-        case GET_USER_COMMENT_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            }
-        case START_DATA_FETCH:
-            return {
-                ...state,
-                isFetching: false,
-                error: ''
-            }
         case GET_DATA_SUCCESS:
             return {
                 ...state,
@@ -134,42 +80,12 @@ export const reducer = (state = initialState, action) => {
                 error: '',
                 loginData: action.payload
             }
-        case GET_DATA_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            }
-        case USER_REGISTER_START:
-            return {
-                ...state,
-                isFetching: true,
-                error: ''
-            }
         case USER_REGISTER_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 error: '',
                 data: action.payload
-            }
-        case USER_REGISTER_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: ''
-            }
-        case EDIT_USER_START:
-            return {
-                ...state,
-                isFetching: false,
-                error: ''
-            }
-        case EDIT_USER_FAIL:
-            return {
-                ...state,
-                isFetching: false,
-                error: ''
             }
         case EDIT_USER_SUCCESS:
             return {
