@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
+import { CommentCardStyled, ContainerStyled } from './Styling';
 
 import { deleteComment } from '../actions'
 
@@ -9,15 +10,17 @@ export const SavedComments = () => {
     const [savedComments, setSavedComments] = useState([])
 
     return (
-        <div>
-            {savedInState.map(comment => {
-                return (
-                    <>
-                        <p>{comment.text}</p>
-                        <button onClick={() => dispatch(deleteComment(comment.salty_score))}>Delete Comment</button>
-                    </>
-                )
-            })}
-        </div>
+        <ContainerStyled>
+            <CommentCardStyled>
+                {savedInState.map(comment => {
+                    return (
+                        <>
+                            <p>{comment.text}</p>
+                            <button onClick={() => dispatch(deleteComment(comment.salty_score))}>Delete Comment</button>
+                        </>
+                    )
+                })}
+            </CommentCardStyled>
+        </ContainerStyled>
     )
 }
