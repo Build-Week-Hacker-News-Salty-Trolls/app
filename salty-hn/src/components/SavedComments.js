@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import { CommentCardStyled, SearchContainerStyled } from './Styling';
 
 export const SavedComments = () => {
     const savedInState = useSelector(state => state.savedComments)
@@ -11,15 +12,17 @@ export const SavedComments = () => {
 
     console.log('saved Comments', savedComments)
     return (
-        <div>
-            {savedInState.map(comment => {
-                return (
-                    <>
-                        <p>{comment.text}</p>
-                        <button onClick={() => localStorage.clear(savedComments)}>Delete Comments</button>
-                    </>
-                )
-            })}
-        </div>
+        <SearchContainerStyled>
+            <CommentCardStyled>
+                {savedInState.map(comment => {
+                    return (
+                        <>
+                            <p>{comment.text}</p>
+                            <button onClick={() => localStorage.clear(savedComments)}>Delete Comments</button>
+                        </>
+                    )
+                })}
+            </CommentCardStyled>
+        </SearchContainerStyled>
     )
 }
