@@ -1,35 +1,22 @@
 import { axiosWithAuth } from '../utils/AxiosWithAuth'
 import axios from 'axios'
 
-export const GET_USERS_START = 'GET_USERS_START';
+export const REQUEST_START = 'REQUEST_START';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
-export const GET_USERS_FAIL = 'GET_USERS_FAIL';
+export const REQUEST_FAIL = 'REQUEST_FAIL';
 
-export const GET_DUMMY_START = 'GET_DUMMY_START';
 export const GET_DUMMY_SUCCESS = 'GET_DUMMY_SUCCESS';
-export const GET_DUMMY_FAIL = 'GET_DUMMY_FAIL';
 
-export const GET_USER_COMMENT_START = 'GET_USER_COMMENT_START';
 export const GET_USER_COMMENT_SUCCESS = 'GET_USER_COMMENT_SUCCESS';
-export const GET_USER_COMMENT_FAIL = 'GET_USER_COMMENT_FAIL';
 
-export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const LOGIN_FAIL = 'LOGIN_FAIL'
 
-// export const SAVE_START = 'SAVE_START'
 export const SAVE_COMMENT = 'SAVE_COMMENT'
 
-export const START_DATA_FETCH = 'START_DATA_FETCH';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
-export const GET_DATA_FAIL = 'GET_DATA_FAIL';
 
-export const USER_REGISTER_START = 'USER_REGISTER_START';
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
-export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
 
-export const EDIT_USER_START = 'EDIT_USER_START'
-export const EDIT_USER_FAIL = 'EDIT_USER_FAIL'
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS'
 
 export const DELETE_COMMENT = 'DELETE_COMMENT'
@@ -38,37 +25,37 @@ export const FILTER_COMMENTS = 'FILTER_COMMENTS'
 
 
 export const getUsers = () => dispatch => {
-    dispatch({ type: GET_USERS_START })
+    dispatch({ type: REQUEST_START })
     axios
         .get('https://salty-salt.herokuapp.com/salty-users')
         .then(res => {
             dispatch({ type: GET_USERS_SUCCESS, payload: res.data })
         })
-        .catch(err => dispatch({ type: GET_USERS_FAIL, payload: err.response }))
+        .catch(err => dispatch({ type: REQUEST_FAIL, payload: err.response }))
 }
 
 export const getDummyData = () => dispatch => {
-    dispatch({ type: GET_DUMMY_START })
+    dispatch({ type: REQUEST_START })
     axios
         .get('https://salty-salt.herokuapp.com/user-dump')
         .then(res => {
             dispatch({ type: GET_DUMMY_SUCCESS, payload: res.data })
         })
-        .catch(err => dispatch({ type: GET_DUMMY_FAIL, payload: err.response }))
+        .catch(err => dispatch({ type: REQUEST_FAIL, payload: err.response }))
 }
 
 export const getUserComments = (userName) => dispatch => {
-    dispatch({ type: GET_USER_COMMENT_START })
+    dispatch({ type: REQUEST_START })
     axios
         .get(`https://salty-salt.herokuapp.com/user-comments/${userName}`)
         .then(res => {
             dispatch({ type: GET_USER_COMMENT_SUCCESS, payload: res.data })
         })
-        .catch(err => dispatch({ type: GET_USER_COMMENT_FAIL, payload: err.response }))
+        .catch(err => dispatch({ type: REQUEST_FAIL, payload: err.response }))
 }
 
 export const userLogin = (loginInfo) => dispatch => {
-    dispatch({ type: LOGIN_START })
+    dispatch({ type: REQUEST_START })
     axiosWithAuth()
         .post('/login',
             `grant_type=password&username=${loginInfo.username}&password=${loginInfo.password}`,
@@ -83,23 +70,23 @@ export const userLogin = (loginInfo) => dispatch => {
             dispatch({ type: LOGIN_SUCCESS, payload: res.data })
             localStorage.setItem('token', res.data.access_token)
         })
-        .catch(err => dispatch({ type: LOGIN_FAIL, payload: err.response }))
+        .catch(err => dispatch({ type: REQUEST_FAIL, payload: err.response }))
 }
 
 export const getUserData = () => dispatch => {
-    dispatch({ type: START_DATA_FETCH })
+    dispatch({ type: REQUEST_START })
     axiosWithAuth()
         .get(`https://sethnadu-foodie-bw.herokuapp.com/users/users`)
         .then(res => {
             dispatch({ type: GET_DATA_SUCCESS, payload: res.data })
         })
-        .catch(err => dispatch({ type: GET_DATA_FAIL, payload: err.response }))
+        .catch(err => dispatch({ type: REQUEST_FAIL, payload: err.response }))
 }
 
 //This action handles user registration push the inputed data to BE server 
 
 export const userRegister = userInfo => dispatch => {
-    dispatch({ type: USER_REGISTER_START })
+    dispatch({ type: REQUEST_START })
     axios
         .post('https://sethnadu-foodie-bw.herokuapp.com/createnewuser', userInfo)
         .then(res => {
@@ -107,20 +94,20 @@ export const userRegister = userInfo => dispatch => {
         })
         .catch(err => {
             console.log('error', err)
-            dispatch({ type: USER_REGISTER_FAIL, payload: err.response })
+            dispatch({ type: REQUEST_FAIL, payload: err.response })
         })
 }
 
 // this action handles user editing taking the inputs from the EditUser component and over writting the existing data
 
 export const editUser = (userInfo, id) => dispatch => {
-    dispatch({ type: EDIT_USER_START })
+    dispatch({ type: REQUEST_START })
     axios
         .put(`https://sethnadu-foodie-bw.herokuapp.com/users/user/23`, userInfo)
         .then(res => {
             dispatch({ type: EDIT_USER_SUCCESS })
         })
-        .catch(err => dispatch({ type: EDIT_USER_FAIL, payload: err.response }))
+        .catch(err => dispatch({ type: REQUEST_FAIL, payload: err.response }))
 }
 
 // This action will push the selected comment into the end point that holds saved comments

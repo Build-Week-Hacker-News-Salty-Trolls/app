@@ -10,8 +10,6 @@ export const UserComments = props => {
     const comments = useSelector(state => state.userComments)
     const savedComment = useSelector(state => state.savedComments)
     const loading = useSelector(state => state.isFetching)
-    // const [commentToSave, setComment] = useLocalStorage(['comments'])
-
 
 
     useEffect(() => {
@@ -38,7 +36,6 @@ export const UserComments = props => {
                     </CommentCardStyled>
                 )
             })}
-
         </ContainerStyled>
     )
 }
